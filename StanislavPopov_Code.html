@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>StanislavPopov.java – Quellcode</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+        }
+        pre {
+            background-color: #2d2d2d;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #dcdcdc;
+        }
+        .keyword { color: #569cd6; }
+        .string  { color: #ce9178; }
+        .comment { color: #6a9955; font-style: italic; }
+        .type    { color: #4ec9b0; }
+    </style>
+</head>
+<body>
+<h2>💻 StanislavPopov.java – Quellcode</h2>
+<pre><code>
+// <span class="comment">Stanislav Popov – Persönliches Java-Profil</span>
+<span class="keyword">import</span> java.time.LocalDate;
+<span class="keyword">import</span> java.time.Month;
+<span class="keyword">import</span> java.time.Period;
+<span class="keyword">import</span> java.time.temporal.ChronoUnit;
+
+<span class="keyword">public class</span> <span class="type">StanislavPopov</span> {
+
+    <span class="keyword">public static void</span> <span class="type">main</span>(String[] args) {
+
+        <span class="comment">// >>> Persönliche Basisdaten</span>
+        String fullName = <span class="string">"Stanislav Popov"</span>;
+        String birthCity = <span class="string">"Luhansk"</span>;
+        String birthCountry = <span class="string">"Ukraine"</span>;
+        int birthYear = 2000;
+        int birthDay = 26;
+        Month birthMonth = Month.JULY;
+
+        System.out.println(<span class="string">">>> [Analyse gestartet: Persönliche Basisdaten]\n"</span>);
+        System.out.printf(<span class="string">"-> Name: %s%n"</span>, fullName);
+        System.out.printf(<span class="string">"-> Geburtsort: %s, %s%n"</span>, birthCity, birthCountry);
+        System.out.printf(<span class="string">"-> Geburtsdatum: %d.%d.%d%n"</span>, birthDay, birthMonth.getValue(), birthYear);
+
+        <span class="comment">// >>> Realistisches Alter mit Period</span>
+        LocalDate today = LocalDate.now();
+        LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
+        Period lived = Period.between(birthDate, today);
+        var livedYears = lived.getYears();
+        var livedMonths = lived.getMonths();
+        var livedDays = lived.getDays();
+
+        System.out.println(<span class="string">"\n>>> [Berechnung: Realistisch – Bisher gelebte Zeit]"</span>);
+        <span class="keyword">if</span> (livedYears > 0 || livedMonths > 0 || livedDays > 0){
+            System.out.printf(<span class="string">"-> Gelebt (realistisch): %d Jahre, %d Monate, %d Tage%n"</span>, livedYears, livedMonths, livedDays);
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"-> Ungültige Zeitspanne oder Zukunftsdatum"</span>);
+        }
+
+        <span class="comment">// >>> ChronoUnit Details</span>
+        long totalWeeks = ChronoUnit.WEEKS.between(birthDate, today);
+        long totalHours = ChronoUnit.HOURS.between(birthDate.atStartOfDay(), today.atStartOfDay());
+        long totalMinutes = ChronoUnit.MINUTES.between(birthDate.atStartOfDay(), today.atStartOfDay());
+        long totalSeconds = ChronoUnit.SECONDS.between(birthDate.atStartOfDay(), today.atStartOfDay());
+
+        <span class="keyword">if</span> (totalSeconds > 0) {
+            System.out.printf(<span class="string">"-> Das sind ungefähr: %d Wochen, %d Stunden, %d Minuten, %d Sekunden%n"</span>,
+                totalWeeks, totalHours, totalMinutes, totalSeconds);
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"-> Keine chronologische Dauer ermittelt"</span>);
+        }
+
+        <span class="comment">// >>> Alter (geschätzt) via for</span>
+        var simulatedYears = today.getYear() - birthYear;
+        <span class="keyword">if</span> (today.getMonthValue() < birthMonth.getValue() ||
+            (today.getMonthValue() == birthMonth.getValue() && today.getDayOfMonth() < birthDay)) {
+            simulatedYears--;
+        }
+
+        var simulatedMonths = 0;
+        <span class="keyword">for</span> (int month = 1; month <= 12; month++) {
+            simulatedMonths++;
+            <span class="keyword">if</span> (month == birthMonth.getValue()) <span class="keyword">break</span>;
+        }
+
+        var simulatedDays = 0;
+        <span class="keyword">for</span> (int day = 1; day <= 31; day++) {
+            simulatedDays++;
+            <span class="keyword">if</span> (day == birthDay) <span class="keyword">break</span>;
+        }
+
+        System.out.println(<span class="string">"\n>>> [Berechnung: Geschätztes Alter]"</span>);
+        <span class="keyword">if</span> (simulatedYears >= 0 && simulatedMonths > 0 && simulatedDays > 0) {
+            System.out.printf(<span class="string">"-> Alter (geschätzt): %d Jahre, %d Monate, %d Tage%n"</span>,
+                simulatedYears, simulatedMonths, simulatedDays);
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"-> Fehler bei der geschätzten Altersberechnung"</span>);
+        }
+
+        System.out.println(<span class="string">">>> Simulation abgeschlossen"</span>);
+
+        <span class="comment">// >>> Statusanalyse</span>
+        boolean migrated = true;
+        boolean inRelationship = true;
+        String partnerName = <span class="string">"Dora"</span>;
+        String relationshipStatus = String.format(<span class="string">"In Beziehung mit %s"</span>, partnerName);
+        String currentCity = <span class="string">"Selb"</span>;
+
+        System.out.println(<span class="string">"\n>>> [Statusanalyse]"</span>);
+        <span class="keyword">if</span> (migrated) {
+            System.out.println(<span class="string">"[OK] Neuanfang in Deutschland"</span>);
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"[WARN] Noch im Herkunftsland"</span>);
+        }
+
+        <span class="keyword">if</span> (inRelationship) {
+            System.out.printf(<span class="string">"[OK] Beziehungsstatus: %s%n"</span>, relationshipStatus);
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"[INFO] Aktuell nicht in einer Beziehung"</span>);
+        }
+
+        <span class="keyword">if</span> (currentCity != null && !currentCity.isEmpty()) {
+            System.out.printf(<span class="string">"-> Aktueller Wohnort: %s%n"</span>, currentCity);
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"-> Wohnort nicht bekannt"</span>);
+        }
+
+        System.out.println(<span class="string">"\n>>> Systemanalyse abgeschlossen: Persönliche Daten erfolgreich geladen"</span>);
+    }
+}
+</code></pre>
+</body>
+</html>
