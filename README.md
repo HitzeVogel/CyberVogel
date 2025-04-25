@@ -8,4 +8,4 @@ Java
 
 ├── StanislavPopov.java [StanislavPopov_Code.html](./StanislavPopov_Code.html)
 
-├── SkillCore.java Deutsch_B2_Leben_Deutschland.pdf Beurteilungsbogen_StanislavPopov.pdf
+├── SkillCore.java [SkillCore_Console.html](./SkillCore_Console.html)
