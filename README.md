@@ -1,8 +1,8 @@
 # CyberVogel
 
-🧠java-bewerbung/
+🧠java-bewerbung/ 
 
-Java
+![Java](https://img.shields.io/badge/Code-Java-orange?logo=java)
 
 ├── Main.java
 
